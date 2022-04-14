@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "515849272550",
+    "project_id": "mymedicine-3de15",
+    "storage_bucket": "mymedicine-3de15.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515849272550:android:36a0a684a20ae2dc5ccf27",
+        "android_client_info": {
+          "package_name": "co.mymedicine.co.mymedicinemobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "515849272550-hf806qkmmb2bbok8gs8agf75re2bptcs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZXNIa8Itx3VYsUSGXwTfd-GkEYAaAet0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "515849272550-hf806qkmmb2bbok8gs8agf75re2bptcs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
