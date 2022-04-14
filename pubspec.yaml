@@ -52,6 +52,9 @@ dependencies:
   firebase_messaging: ^11.2.3
   flutterwave_standard: ^1.0.3
   avatar_glow: ^2.0.2
+  google_sign_in: ^5.3.0
+  sign_in_with_apple: ^3.3.0
+
 
 #eyJraWQiOiJjdXN0b20tb2F1dGgta2V5aWQiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmcmVzaGNoYXQiLCJzdWIiOiIzMDVmYmUxMS1jNzY0LTRhZWEtOTEzNS05NjE5ODIxZThhNTQiLCJjbGllbnRJZCI6ImZjLTk4MWVlYTFjLWJhNTgtNDIxMC05YjMzLTM3MmU2NzY3YjgwMSIsInNjb3BlIjoiYWdlbnQ6cmVhZCBhZ2VudDpjcmVhdGUgYWdlbnQ6dXBkYXRlIGFnZW50OmRlbGV0ZSBjb252ZXJzYXRpb246Y3JlYXRlIGNvbnZlcnNhdGlvbjpyZWFkIGNvbnZlcnNhdGlvbjp1cGRhdGUgbWVzc2FnZTpjcmVhdGUgbWVzc2FnZTpnZXQgYmlsbGluZzp1cGRhdGUgcmVwb3J0czpmZXRjaCByZXBvcnRzOmV4dHJhY3QgcmVwb3J0czpyZWFkIHJlcG9ydHM6ZXh0cmFjdDpyZWFkIGRhc2hib2FyZDpyZWFkIHVzZXI6cmVhZCB1c2VyOmNyZWF0ZSB1c2VyOnVwZGF0ZSB1c2VyOmRlbGV0ZSBvdXRib3VuZG1lc3NhZ2U6c2VuZCBvdXRib3VuZG1lc3NhZ2U6Z2V0IG1lc3NhZ2luZy1jaGFubmVsczptZXNzYWdlOnNlbmQgbWVzc2FnaW5nLWNoYW5uZWxzOm1lc3NhZ2U6Z2V0IG1lc3NhZ2luZy1jaGFubmVsczp0ZW1wbGF0ZTpjcmVhdGUgbWVzc2FnaW5nLWNoYW5uZWxzOnRlbXBsYXRlOmdldCBmaWx0ZXJpbmJveDpyZWFkIGZpbHRlcmluYm94OmNvdW50OnJlYWQgcm9sZTpyZWFkIGltYWdlOnVwbG9hZCIsImlzcyI6ImZyZXNoY2hhdCIsInR5cCI6IkJlYXJlciIsImV4cCI6MTk1NTQ4NDY3MCwiaWF0IjoxNjM5OTUxODcwLCJqdGkiOiIxZDZmMWFlNC0yMzE2LTQ4MzctOWY2ZC0wZWRmY2EwYTc1MTYifQ.oDp5qYhB2rrlmGAMYtMdZZODlDaaGVac1F9eCtzNX6c
 
@@ -86,6 +89,7 @@ flutter:
 #    - assets/icons/
 #    - assets/rive/
     - assets/svg/
+    - lib/image/apple.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

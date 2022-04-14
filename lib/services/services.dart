@@ -1930,6 +1930,57 @@ class ServiceClass extends ChangeNotifier {
     }
   }
 
+  // Future<String> selectsShippingAddress(
+  //     MedShipAddrees address, int salesOrderId) async {
+  //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  //   String? token = sharedPreferences.getString("Token");
+  //
+  //   var headers = {
+  //     HttpHeaders.authorizationHeader: 'Bearer $token',
+  //     'Content-Type': 'application/problem+json; charset=utf-8 '
+  //   };
+  //   try {
+  //     var dataB = jsonEncode(<String, Object>{
+  //       "customerId": 0,
+  //       "mobilekey": "string",
+  //       "fromaccount": "string",
+  //       "fromacctname": "string",
+  //       "fromaccountstatus": "string",
+  //       "fromaccountemail": "string",
+  //       "fromacctype": "string",
+  //       "toaccount": "string",
+  //       "toacctname": "string",
+  //       "toacctype": "string",
+  //       "tokenType": 0,
+  //       "transactionreference": "string",
+  //       "amount": 0,
+  //       "dailylimit": 0,
+  //       "currentbalance": 0,
+  //       "trandate": "2022-04-27T22:35:04.813Z",
+  //       "narration": "string",
+  //       "channelId": 0,
+  //       "loginuserid": "string",
+  //       "tranToken": "string",
+  //       "toacctnuban": "string",
+  //       "toacctbvn": "string"
+  //     });
+  //
+  //     var url = Uri.parse(BaseUrl + "apigw/cart/address");
+  //     http.Response response =
+  //     await http.post(url, body: dataB, headers: headers);
+  //     print(response);
+  //     if (response.statusCode == 200) {
+  //       return response.body;
+  //     } else {
+  //       return response.body;
+  //     }
+  //   } on SocketException catch (e) {
+  //     print("Error messages now ooooo");
+  //     return "Network Error";
+  //   }
+  // }
+
+
   Future<String> fliterBrandsSearch(String txt) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     String? token = sharedPreferences.getString("Token");

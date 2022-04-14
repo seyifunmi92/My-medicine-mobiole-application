@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mymedicinemobile/models/models.dart';
@@ -9,14 +8,13 @@ import 'package:mymedicinemobile/screens/mobile/product_search/searchProduct.dar
 import 'package:mymedicinemobile/screens/mobile/shop_by_category/filter.dart';
 import 'package:mymedicinemobile/services/services.dart';
 import 'package:provider/provider.dart';
-
 import '../constants.dart';
 import '../text_style.dart';
 
 Widget navBarCustom(String pageName, BuildContext context, Widget widget,bool showPageName) =>
     Container(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      color: Color(0xFFF8F5FC),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      color: const Color(0xFFF8F5FC),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -33,7 +31,7 @@ Widget navBarCustom(String pageName, BuildContext context, Widget widget,bool sh
                   height: 20,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               showPageName ? Text(
@@ -120,8 +118,8 @@ Widget navBarCustom(String pageName, BuildContext context, Widget widget,bool sh
 
 Widget navBarSearchCustom(String pageName, BuildContext context, Widget widget,bool showPageName) =>
     Container(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      color: Color(0xFFF8F5FC),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      color: const Color(0xFFF8F5FC),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

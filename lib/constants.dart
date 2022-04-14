@@ -27,3 +27,31 @@ Color kColorWhite = Colors.white;
 Color kColorShade = const Color(0xfff5f5f5);
 const kColorBlack = Color(0xFF1D1D35);
 const kDefaultPadding = 20.0;
+const LinearGradient kColor = LinearGradient(
+  begin: Alignment.topLeft,
+  end: Alignment.bottomRight,
+colors: <Color>[
+  Color(0xFF878685),
+  Color(0xFFAD00FF),
+],
+  tileMode: TileMode.repeated,
+    );
+const kColorBody = Color(0xffC0C0C0);
+const LinearGradient kColory = LinearGradient(
+  begin: Alignment.topLeft,
+  end: Alignment.bottomRight,
+  colors: <Color>[
+    Color(0xFF878685),
+    Color(0xFFAD00FF),
+  ],
+  tileMode: TileMode.repeated,
+);
+const LinearGradient kColorys = LinearGradient(
+  begin: Alignment.topLeft,
+  end: Alignment.bottomRight,
+  colors: <Color>[
+    Color(0xFF878685),
+    Color(0xFFAD00FF),
+  ],
+  tileMode: TileMode.repeated,
+);

@@ -10,7 +10,9 @@ import 'package:mymedicinemobile/text_style.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
 class SubScription extends StatefulWidget {
-  _SubScription createState() => new _SubScription();
+  const SubScription({Key? key}) : super(key: key);
+  @override
+  _SubScription createState() => _SubScription();
 }
 
 class _SubScription extends State<SubScription> {
@@ -21,53 +23,48 @@ class _SubScription extends State<SubScription> {
   bool showPicker2 = false;
   bool showSecond = false;
   bool showCongrats = false;
-  TextEditingController searchC = new TextEditingController();
-
+  TextEditingController searchC = TextEditingController();
   List<CartModel> trackList = [];
   stt.SpeechToText speech = stt.SpeechToText();
-
   List<CartModel> list = [
-    new CartModel(
+    CartModel(
         name: "Alfonso",
         price: "10,500",
         quantity: 0,
         isChecked: false,
         image: "assets/images/product_search.png"),
-    new CartModel(
+    CartModel(
         name: "Mushrooms Herb- Energy for men",
         price: "10,500",
         quantity: 0,
         isChecked: false,
         image: "assets/images/product_search.png"),
-    new CartModel(
+    CartModel(
         name: "Alfonso X",
         price: "10,500",
         quantity: 0,
         isChecked: false,
         image: "assets/images/product_search.png"),
-    new CartModel(
+    CartModel(
         name: "Paracetamol",
         price: "10,500",
         quantity: 0,
         isChecked: false,
         image: "assets/images/product_search.png"),
-    new CartModel(
+    CartModel(
         name: "Prolactin",
         price: "4,500",
         quantity: 10,
         isChecked: false,
         image: "assets/images/product_search.png"),
   ];
-
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -82,10 +79,9 @@ class _SubScription extends State<SubScription> {
                   ? Container(
                       child: Column(
                         children: [
-
-
-                          navBarCustomCartBeforePerson('Payment Method',context, Cart(),true),
-                          SizedBox(
+                          navBarCustomCartBeforePerson(
+                              'Payment Method', context, Cart(), true),
+                          const SizedBox(
                             height: 20,
                           ),
                           Row(
@@ -93,7 +89,7 @@ class _SubScription extends State<SubScription> {
                             children: [
                               Row(
                                 children: [
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 15,
                                   ),
                                   SvgPicture.asset(
@@ -101,10 +97,10 @@ class _SubScription extends State<SubScription> {
                                     width: 30,
                                     height: 30,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 30,
                                   ),
-                                  Text("Mastercard-1234",
+                                  const Text("Mastercard-1234",
                                       style: TextStyle(
                                           color: kColorBlack,
                                           fontSize: 15,
@@ -121,7 +117,7 @@ class _SubScription extends State<SubScription> {
                                   });
                                 },
                                 child: Container(
-                                  margin: EdgeInsets.only(right: 15),
+                                  margin: const EdgeInsets.only(right: 15),
                                   width: 25,
                                   height: 25,
                                   decoration: BoxDecoration(
@@ -135,14 +131,14 @@ class _SubScription extends State<SubScription> {
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 15,
                           ),
                           Divider(
                             height: 2,
                             color: kColorSmoke2,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 15,
                           ),
                           Row(
@@ -150,7 +146,7 @@ class _SubScription extends State<SubScription> {
                             children: [
                               Row(
                                 children: [
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 15,
                                   ),
                                   SvgPicture.asset(
@@ -158,10 +154,10 @@ class _SubScription extends State<SubScription> {
                                     width: 30,
                                     height: 30,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 30,
                                   ),
-                                  Text("Add credit or debit card",
+                                  const Text("Add credit or debit card",
                                       style: TextStyle(
                                           color: kColorBlack,
                                           fontSize: 15,
@@ -178,7 +174,7 @@ class _SubScription extends State<SubScription> {
                                   });
                                 },
                                 child: Container(
-                                  margin: EdgeInsets.only(right: 15),
+                                  margin: const EdgeInsets.only(right: 15),
                                   width: 25,
                                   height: 25,
                                   decoration: BoxDecoration(
@@ -192,7 +188,7 @@ class _SubScription extends State<SubScription> {
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
                         ],
@@ -200,23 +196,24 @@ class _SubScription extends State<SubScription> {
                     )
                   : Column(
                       children: [
-                        navBarCustomCartBeforePerson('Refill Subscription',context, Cart(),true),
-                        SizedBox(
+                        navBarCustomCartBeforePerson(
+                            'Refill Subscription', context, Cart(), true),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Get  your medicine refill",
+                        const Text("Get  your medicine refill",
                             style: TextStyle(
                                 color: kColorBlack,
                                 fontSize: 13,
                                 fontFamily: "Poppins",
                                 fontWeight: FontWeight.w400)),
                         Container(
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                               horizontal: 10, vertical: 10),
-                          margin: EdgeInsets.symmetric(
+                          margin: const EdgeInsets.symmetric(
                               horizontal: 15, vertical: 10),
                           decoration: BoxDecoration(
-                              color: Color(0xFFF7F5FC),
+                              color: const Color(0xFFF7F5FC),
                               borderRadius: BorderRadius.circular(20)),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -231,7 +228,7 @@ class _SubScription extends State<SubScription> {
                                         width: 10,
                                         height: 10,
                                       ),
-                                      Text(
+                                      const Text(
                                         "20,000/First year",
                                         style: TextStyle(
                                             color: kPrimaryColor,
@@ -241,7 +238,7 @@ class _SubScription extends State<SubScription> {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 5,
                                   ),
                                   InkWell(
@@ -251,10 +248,10 @@ class _SubScription extends State<SubScription> {
                                       });
                                     },
                                     child: Container(
-                                      padding: EdgeInsets.symmetric(
+                                      padding: const EdgeInsets.symmetric(
                                           horizontal: 10, vertical: 10),
                                       decoration: BoxDecoration(
-                                          color: Color(0xFF3CA455),
+                                          color: const Color(0xFF3CA455),
                                           borderRadius:
                                               BorderRadius.circular(10)),
                                       child: Text("Subscribe now",
@@ -276,32 +273,32 @@ class _SubScription extends State<SubScription> {
                           ),
                         ),
                         Container(
-                          margin:
-                              EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          margin: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 5),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Subscription includes",
+                              const Text("Subscription includes",
                                   style: TextStyle(
                                       color: kColorBlack,
                                       fontSize: 15,
                                       fontFamily: "Poppins",
                                       fontWeight: FontWeight.w600)),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               Row(
                                 children: [
                                   SvgPicture.asset(
                                     "assets/svg/radio_return.svg",
-                                    color: Color(0xFF3CA455),
+                                    color: const Color(0xFF3CA455),
                                     width: 15,
                                     height: 15,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
-                                  Text("20% discount for first year",
+                                  const Text("20% discount for first year",
                                       style: TextStyle(
                                           color: kColorBlack,
                                           fontSize: 11,
@@ -309,7 +306,7 @@ class _SubScription extends State<SubScription> {
                                           fontWeight: FontWeight.w400)),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               Row(
@@ -320,10 +317,10 @@ class _SubScription extends State<SubScription> {
                                     width: 15,
                                     height: 15,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
-                                  Text("Automated refill and reminder",
+                                  const Text("Automated refill and reminder",
                                       style: TextStyle(
                                           color: kColorBlack,
                                           fontSize: 11,
@@ -331,21 +328,21 @@ class _SubScription extends State<SubScription> {
                                           fontWeight: FontWeight.w400)),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               Row(
                                 children: [
                                   SvgPicture.asset(
                                     "assets/svg/radio_return.svg",
-                                    color: Color(0xFF3CA455),
+                                    color: const Color(0xFF3CA455),
                                     width: 15,
                                     height: 15,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
-                                  Text("No price change/increment",
+                                  const Text("No price change/increment",
                                       style: TextStyle(
                                           color: kColorBlack,
                                           fontSize: 11,
@@ -353,21 +350,21 @@ class _SubScription extends State<SubScription> {
                                           fontWeight: FontWeight.w400)),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               Row(
                                 children: [
                                   SvgPicture.asset(
                                     "assets/svg/radio_return.svg",
-                                    color: Color(0xFF3CA455),
+                                    color: const Color(0xFF3CA455),
                                     width: 15,
                                     height: 15,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
-                                  Text(
+                                  const Text(
                                       "Quarterly medication review with our pharmacist",
                                       style: TextStyle(
                                           color: kColorBlack,
@@ -376,21 +373,22 @@ class _SubScription extends State<SubScription> {
                                           fontWeight: FontWeight.w400)),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               Row(
                                 children: [
                                   SvgPicture.asset(
                                     "assets/svg/radio_return.svg",
-                                    color: Color(0xFF3CA455),
+                                    color: const Color(0xFF3CA455),
                                     width: 15,
                                     height: 15,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
-                                  Text("Free delivery for up to 3 fulfilments",
+                                  const Text(
+                                      "Free delivery for up to 3 fulfilments",
                                       style: TextStyle(
                                           color: kColorBlack,
                                           fontSize: 11,
@@ -411,7 +409,7 @@ class _SubScription extends State<SubScription> {
                       child: Container(
                         width: width,
                         height: height,
-                        color: Color(0xFF000000).withOpacity(0.25),
+                        color: const Color(0xFF000000).withOpacity(0.25),
                         child: Stack(
                           children: [
                             Positioned(
@@ -419,7 +417,7 @@ class _SubScription extends State<SubScription> {
                               left: 20,
                               right: 20,
                               child: Container(
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                     horizontal: 10, vertical: 10),
                                 width: 200,
                                 decoration: BoxDecoration(
@@ -428,26 +426,26 @@ class _SubScription extends State<SubScription> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
-                                    Text("Mymedicines Terms of Service",
+                                    const Text("Mymedicines Terms of Service",
                                         style: TextStyle(
                                             color: kColorBlack,
                                             fontSize: 13,
                                             fontFamily: "Poppins",
                                             fontWeight: FontWeight.w600)),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
-                                    Text(
+                                    const Text(
                                         "By subscribing to mymedicine medicine refill, you agree to the mymedicines Terms of Service. Note: The mymedicines Privacy Policy describes how data is handled in this service.",
                                         style: TextStyle(
                                             color: kColorBlack,
                                             fontSize: 13,
                                             fontFamily: "Poppins",
                                             fontWeight: FontWeight.w400)),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 40,
                                     ),
                                     Row(
@@ -459,14 +457,14 @@ class _SubScription extends State<SubScription> {
                                               showBanner = false;
                                             });
                                           },
-                                          child: Text("Cancel",
+                                          child: const Text("Cancel",
                                               style: TextStyle(
                                                   color: kColorBlack,
                                                   fontSize: 13,
                                                   fontFamily: "Poppins",
                                                   fontWeight: FontWeight.w400)),
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 30,
                                         ),
                                         InkWell(
@@ -475,7 +473,7 @@ class _SubScription extends State<SubScription> {
                                               showPicker = true;
                                             });
                                           },
-                                          child: Text("Agree",
+                                          child: const Text("Agree",
                                               style: TextStyle(
                                                   color: kPrimaryColor,
                                                   fontSize: 13,
@@ -484,7 +482,7 @@ class _SubScription extends State<SubScription> {
                                         ),
                                       ],
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                   ],
@@ -685,10 +683,10 @@ class _SubScription extends State<SubScription> {
                                             )),
                                           ),
                                           Container(
-                                            margin: EdgeInsets.only(
+                                            margin: const EdgeInsets.only(
                                                 left: 15, right: 15, top: 10),
                                             child: Column(
-                                              children: [
+                                              children: const [
                                                 Text(
                                                   "You will be charged N20,000 + tax automatically every month until you cancel ",
                                                   style: TextStyle(
@@ -722,15 +720,15 @@ class _SubScription extends State<SubScription> {
                           ],
                         ),
                       ))
-                  : Center(),
+                  : const Center(),
               showPicker2
                   ? Positioned(
                       bottom: 0,
                       left: 0,
                       right: 0,
                       child: Container(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 10),
                         decoration: BoxDecoration(
                             color: kColorWhite,
                             boxShadow: [
@@ -738,20 +736,20 @@ class _SubScription extends State<SubScription> {
                                 color: kColorSmoke.withOpacity(.4),
                                 spreadRadius: 2,
                                 blurRadius: 7,
-                                offset:
-                                    Offset(0, 3), // changes position of shadow
+                                offset: const Offset(
+                                    0, 3), // changes position of shadow
                               ),
                             ],
                             borderRadius: BorderRadius.circular(10)),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
                             Container(
-                              margin:
-                                  EdgeInsets.only(left: 15, right: 15, top: 10),
+                              margin: const EdgeInsets.only(
+                                  left: 15, right: 15, top: 10),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -762,7 +760,7 @@ class _SubScription extends State<SubScription> {
                                         width: 30,
                                         height: 30,
                                       ),
-                                      Text("Medicine Refill",
+                                      const Text("Medicine Refill",
                                           style: TextStyle(
                                               color: kColorBlack,
                                               fontSize: 13,
@@ -770,17 +768,17 @@ class _SubScription extends State<SubScription> {
                                               fontWeight: FontWeight.w600)),
                                     ],
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
-                                  Text("Starting 10 July 2021",
+                                  const Text("Starting 10 July 2021",
                                       style: TextStyle(
                                           color: kColorBlack,
                                           fontSize: 13,
                                           fontFamily: "Poppins",
                                           fontWeight: FontWeight.w500),
                                       textAlign: TextAlign.start),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   Text("Cancel at anytime on your account page",
@@ -789,7 +787,7 @@ class _SubScription extends State<SubScription> {
                                           fontSize: 11,
                                           fontFamily: "Poppins",
                                           fontWeight: FontWeight.w400)),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 1,
                                   ),
                                   Row(
@@ -804,7 +802,7 @@ class _SubScription extends State<SubScription> {
                                               fontSize: 11,
                                               fontFamily: "Poppins",
                                               fontWeight: FontWeight.w400)),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 30,
                                       ),
                                       InkWell(
@@ -813,7 +811,7 @@ class _SubScription extends State<SubScription> {
                                             showPicker2 = false;
                                           });
                                         },
-                                        child: Text("CANCEL",
+                                        child: const Text("CANCEL",
                                             style: TextStyle(
                                                 color: kPrimaryColor,
                                                 fontSize: 11,
@@ -825,14 +823,14 @@ class _SubScription extends State<SubScription> {
                                 ],
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Divider(
                               height: 2,
                               color: kColorSmoke2,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
                             Row(
@@ -840,16 +838,16 @@ class _SubScription extends State<SubScription> {
                               children: [
                                 Row(
                                   children: [
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 15,
                                     ),
                                     SvgPicture.asset(
                                       "assets/svg/logos_mastercard.svg",
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 30,
                                     ),
-                                    Text("Mastercard-1234",
+                                    const Text("Mastercard-1234",
                                         style: TextStyle(
                                             color: kColorBlack,
                                             fontSize: 13,
@@ -858,7 +856,7 @@ class _SubScription extends State<SubScription> {
                                   ],
                                 ),
                                 Container(
-                                  margin: EdgeInsets.only(right: 10),
+                                  margin: const EdgeInsets.only(right: 10),
                                   child: InkWell(
                                       onTap: () {
                                         setState(() {
@@ -866,34 +864,33 @@ class _SubScription extends State<SubScription> {
                                           showBanner = false;
                                         });
                                       },
-                                      child: Icon(
+                                      child: const Icon(
                                         Icons.arrow_forward_ios,
                                       )),
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
                             Divider(
                               height: 2,
                               color: kColorSmoke2,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
-
                             InkWell(
-                              onTap: (){
+                              onTap: () {
                                 setState(() {
                                   showCongrats = true;
                                 });
                               },
                               child: Container(
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                     horizontal: 10, vertical: 10),
-                                margin:
-                                    EdgeInsets.only(left: 15, right: 15, top: 10),
+                                margin: const EdgeInsets.only(
+                                    left: 15, right: 15, top: 10),
                                 decoration: BoxDecoration(
                                     color: Colors.green,
                                     borderRadius: BorderRadius.circular(5)),
@@ -908,12 +905,11 @@ class _SubScription extends State<SubScription> {
                                 )),
                               ),
                             ),
-
                             Container(
                               margin:
                                   EdgeInsets.only(left: 15, right: 15, top: 10),
                               child: Column(
-                                children: [
+                                children: const [
                                   Text(
                                     "You will be charged N20,000 + tax automatically every month until you cancel ",
                                     style: TextStyle(
@@ -941,7 +937,7 @@ class _SubScription extends State<SubScription> {
                         ),
                       ),
                     )
-                  : Center(),
+                  : const Center(),
               showCongrats
                   ? Positioned(
                       bottom: 0,
@@ -950,7 +946,7 @@ class _SubScription extends State<SubScription> {
                       child: Container(
                           width: width,
                           height: height,
-                          color: Color(0xFF000000).withOpacity(0.25),
+                          color: const Color(0xFF000000).withOpacity(0.25),
                           child: Stack(children: [
                             Positioned(
                                 top: 150,
@@ -961,10 +957,13 @@ class _SubScription extends State<SubScription> {
                                     decoration: BoxDecoration(
                                         borderRadius:
                                             BorderRadius.circular(10)),
-                                    child: Image.asset("assets/images/congrats.png",fit: BoxFit.contain,width: 200,)))
+                                    child: Image.asset(
+                                      "assets/images/congrats.png",
+                                      fit: BoxFit.contain,
+                                      width: 200,
+                                    )))
                           ])))
-                  : Center()
-              
+                  : const Center()
             ],
           ),
         ),

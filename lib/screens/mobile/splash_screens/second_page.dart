@@ -102,7 +102,7 @@ class _SecondPage extends State<SecondPage> {
                                       : kColorSmoke,
                                 ),
                               ),
-                              SizedBox(
+                             const  SizedBox(
                                 width: 3,
                               ),
                               Container(
@@ -110,13 +110,13 @@ class _SecondPage extends State<SecondPage> {
                                 height: 5,
                                 decoration: BoxDecoration(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
+                                      const BorderRadius.all(Radius.circular(10)),
                                   color: currentIndex == 1
                                       ? kPrimaryColor
                                       : kColorSmoke,
                                 ),
                               ),
-                              SizedBox(
+                             const  SizedBox(
                                 width: 3,
                               ),
                               Container(

@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, unnecessary_new, prefer_const_declarations, invalid_required_positional_param, avoid_types_as_parameter_names, unnecessary_null_comparison
-
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -36,9 +34,7 @@ import 'package:mymedicinemobile/screens/mobile/subscription/subscription.dart';
 import 'package:mymedicinemobile/screens/mobile/termsandc/termsandc.dart';
 import 'package:mymedicinemobile/screens/mobile/upload_prescription/upload_prescription2.dart';
 import 'package:mymedicinemobile/screens/mobile/wishlist/wishlist.dart';
-
 import 'package:mymedicinemobile/services/services.dart';
-
 import 'package:mymedicinemobile/text_style.dart';
 import 'package:provider/provider.dart';
 import 'package:share/share.dart';
@@ -48,10 +44,11 @@ import 'package:url_launcher/url_launcher.dart';
 class HomePager extends StatefulWidget {
   _HomePager createState() => _HomePager();
 }
-
 class _HomePager extends State<HomePager> {
-  TextEditingController searchC = new TextEditingController();
-  TextEditingController usernameC = new TextEditingController();
+  bool ishere = false;
+  bool isnothere = false;
+  TextEditingController searchC =  TextEditingController();
+  TextEditingController usernameC = TextEditingController();
   bool value = false;
   bool loading = true;
   bool dataLoaded = false;
@@ -86,9 +83,10 @@ class _HomePager extends State<HomePager> {
     new ShopByHealth(asset: "assets/svg/hair.svg", text: "HAIR CARE"),
     new ShopByHealth(asset: "assets/svg/ortho_care.svg", text: "ORTHO CARE"),
     new ShopByHealth(asset: "assets/svg/eye_care.svg", text: "EYE CARE"),
-    new ShopByHealth(
-        asset: "assets/svg/stomach_care.svg", text: "STOMACH CARE"),
+    new ShopByHealth(asset: "assets/svg/stomach_care.svg", text: "STOMACH CARE"),
   ];
+
+  List<ProductFromSubcategory> mypro = [];
 
   void launchWhatsApp({@required number, @required message}) async {
     String url = "whatsapp://send?phone=$number&text=$message";
@@ -104,7 +102,6 @@ class _HomePager extends State<HomePager> {
       throw "Could not launch $url";
     }
   }
-
   void getCurrentUser() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     String Token = sharedPreferences.getString("Token")!;
@@ -113,7 +110,7 @@ class _HomePager extends State<HomePager> {
     String FirstName = sharedPreferences.getString("FirstName")!;
     String Phone = sharedPreferences.getString("Phone")!;
 
-    MedUser medUser = new MedUser(
+    MedUser medUser = MedUser(
         firstName: FirstName,
         lastName: LastName,
         email: Email,
@@ -142,7 +139,6 @@ class _HomePager extends State<HomePager> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     print("Entered");
@@ -281,7 +277,7 @@ class _HomePager extends State<HomePager> {
                                         fontFamily: "Poppins",
                                         fontSize: 11,
                                         color: kColorBlack),
-                                  )
+                                  ),
                                 ],
                               ),
                               SizedBox(
@@ -329,7 +325,7 @@ class _HomePager extends State<HomePager> {
                                         fontFamily: "Poppins",
                                         fontSize: 11,
                                         color: kColorBlack),
-                                  )
+                                  ),
                                 ],
                               ),
                             ],
@@ -1371,6 +1367,7 @@ class _HomePager extends State<HomePager> {
                                           final url =
                                               "http://dev.mymedicines.africa/blog";
                                           if (await canLaunch(url)) {
+                                            print("This can launch $url");
                                             await launch(url,
                                                 forceSafariVC: true,
                                                 forceWebView: true,
@@ -1407,9 +1404,10 @@ class _HomePager extends State<HomePager> {
                                 height: 15,
                               ),
                               Container(
+
                                 height: 300,
                                 child: FutureBuilder(
-                                    future: new ServiceClass().viewAllBlogs(),
+                                    future:  ServiceClass().viewAllBlogs(),
                                     builder: (context, snapshot) {
                                       if (snapshot.hasData) {
                                         if (snapshot.data
@@ -1427,11 +1425,17 @@ class _HomePager extends State<HomePager> {
                                           print("WishList");
 
                                           return Container(
+                                            color: Colors.white,
                                             height: 300,
                                             //padding: EdgeInsets.only(bottom: 20),
                                             child: ListView(
                                               scrollDirection: Axis.horizontal,
                                               children: [
+                                                ...list.map((e) => blogCustom(
+                                                    e.mainImageUrl!,
+                                                    e.title!,
+                                                    e.datePublished!)),
+                                                SizedBox(width: 5,),
                                                 ...list.map((e) => blogCustom(
                                                     e.mainImageUrl!,
                                                     e.title!,
@@ -2976,16 +2980,16 @@ class _HomePager extends State<HomePager> {
     }
   }
 
-  Widget productCustom(ProductList productList) {
+  Widget productCustom(ProductList product) {
     var formatter = NumberFormat('#,###,000');
-    int index = this.productList.indexOf(productList);
+    int index = this.productList.indexOf(product);
     return InkWell(
       onTap: () {
         print("Pressed ........");
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => ProductID(productList.productId!)));
+                builder: (context) => ProductID(product.productId!)));
       },
       child: Container(
         width: MediaQuery.of(context).size.width / 2,
@@ -3005,12 +3009,45 @@ class _HomePager extends State<HomePager> {
         child: Stack(
           children: [
             Column(
+
               children: [
+                SizedBox(height: 10,),
+               Row(
+                 mainAxisAlignment: MainAxisAlignment.start,
+                 crossAxisAlignment: CrossAxisAlignment.start,
+                 children: [
+                   SizedBox(width: 20,),
+                   Container(
+                    height: 25,
+                     width: 120,
+                     decoration: BoxDecoration(
+                       borderRadius: BorderRadius.circular(20),
+                       color: Colors.orange,
+
+                     ),
+                       child:
+                           Center(
+                             child: Center(
+                               child: Text(
+                       product.totalQuantityInStock! > 0 ? "Available"
+                                : "Available on request"
+                                 ,style: TextStyle(
+                                 color: Colors.white,
+                                   fontSize : 10,
+                                   fontFamily: "Poppins",
+
+                               ),),
+                             ),
+
+                     ),
+                   ),
+                 ],
+               ),
                 Container(
                     //width: MediaQuery.of(context).size.width * .65,
-                    height: 200,
+                    height: 170,
                     child: Image.network(
-                      productList.productImageUrl!,
+                      product.productImageUrl!,
                       fit: BoxFit.contain,
                     )),
                 Container(
@@ -3029,7 +3066,7 @@ class _HomePager extends State<HomePager> {
                         height: 10,
                       ),
                       Text(
-                        productList.productName!,
+                        product.productName!,
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontFamily: "Poppins",
@@ -3039,7 +3076,7 @@ class _HomePager extends State<HomePager> {
                         maxLines: 1,
                       ),
                       Text(
-                        productList.productCategory!,
+                        product.productCategory!,
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontFamily: "Poppins",
@@ -3067,7 +3104,7 @@ class _HomePager extends State<HomePager> {
                             height: 10,
                           ),
                           Text(
-                            formatter.format(productList.minPrice!),
+                            formatter.format(product.minPrice!),
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontFamily: "Poppins",
@@ -3091,7 +3128,7 @@ class _HomePager extends State<HomePager> {
               right: 10,
               child: InkWell(
                 onTap: () {
-                  createWishlist(productList.productId!,index);
+                  createWishlist(product.productId!,index);
                 },
                 child: Container(
                   width: 30,
@@ -3103,7 +3140,7 @@ class _HomePager extends State<HomePager> {
                   ),
                   child: SvgPicture.asset(
                     "assets/svg/love.svg",
-                    color: productList.addedToWishList ? kErrorColor: kColorWhite ,
+                    color: product.addedToWishList ? kErrorColor: kColorWhite ,
                     width: 20,
                     height: 20,
                   ),
@@ -3115,8 +3152,8 @@ class _HomePager extends State<HomePager> {
                 right: 0,
                 child: InkWell(
                   onTap: () {
-                    if(productList.totalQuantityInStock! > 0){
-                      addRecentToCart(productList.productId!);
+                    if(product.totalQuantityInStock! > 0){
+                      addRecentToCart(product.productId!);
                     }else{
                       _showMessage("Out of stock");
                     }
@@ -3126,7 +3163,7 @@ class _HomePager extends State<HomePager> {
                     width: 60,
                     height: 40,
                     decoration: BoxDecoration(
-                        color: productList.totalQuantityInStock! > 0 ? kPrimaryColor : kColorSmoke2,
+                        color: product.totalQuantityInStock! > 0 ? kPrimaryColor : kColorSmoke2,
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(20),
                             bottomRight: Radius.circular(20))),

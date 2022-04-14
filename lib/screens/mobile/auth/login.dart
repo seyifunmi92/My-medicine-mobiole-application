@@ -15,14 +15,20 @@ import 'package:mymedicinemobile/services/services.dart';
 import 'package:mymedicinemobile/text_style.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
   @override
   _Login createState() => _Login();
 }
-
 class _Login extends State<Login> with SingleTickerProviderStateMixin {
+  bool isConnectedtoApple = false;
+  String appleError = "Error connecting to appple";
+  bool googleOn = true;
+  String errorGoogle = "";
+  GoogleSignIn mygoogle = GoogleSignIn(scopes : ["Email"]);
   TextEditingController passC = TextEditingController();
   TextEditingController usernameC = TextEditingController();
   bool value = false;
@@ -49,7 +55,6 @@ class _Login extends State<Login> with SingleTickerProviderStateMixin {
     checkUser();
     super.initState();
   }
-
   @override
   void dispose() {
     _animationController.dispose();
@@ -89,6 +94,9 @@ class _Login extends State<Login> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    GoogleSignInAccount? currentUser = mygoogle.currentUser;
+    print(currentUser);
+    print ("This is the $currentUser status");
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     //checkUser();
@@ -360,7 +368,8 @@ class _Login extends State<Login> with SingleTickerProviderStateMixin {
                                     fontFamily: "Poppins",
                                     fontSize: 11,
                                     color: kPrimaryColor),
-                              )),
+                              ),
+                          ),
                         ],
                       ),
                     ),
@@ -401,96 +410,153 @@ class _Login extends State<Login> with SingleTickerProviderStateMixin {
                             ),
                           ),
                           const SizedBox(
-                            height: 20,
+                            height: 30,
                           ),
-                          Text(
-                            "or sign in with",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontFamily: "Poppins",
-                                fontSize: 12,
-                                color: kColorSmoke),
-                            textAlign: TextAlign.center,
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Container(
-                            width: width,
-                            height: 40,
-                            color: kfacebookColor,
-                            child: Center(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 5, top: 5, bottom: 5),
-                                    child: Container(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 7, vertical: 5),
-                                        decoration: BoxDecoration(
-                                            color: kColorWhite,
-                                            borderRadius:
-                                                BorderRadius.circular(180)),
-                                        child: SvgPicture.asset(
-                                          "assets/svg/facebook.svg",
-                                          color: kfacebookColor,
-                                          width: 10,
-                                          height: 10,
-                                        )),
-                                  ),
-                                  const SizedBox(
-                                    width: 15,
-                                  ),
-                                  Text(
-                                    "FACEBOOK",
-                                    style: kmediumTextBold(kColorWhite),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  Text("")
-                                ],
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Container(
-                            width: width,
-                            height: 40,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                  width: .6,
-                                  color: kColorSmoke,
-                                  style: BorderStyle.solid),
-                              color: kColorWhite,
-                            ),
-                            child: Center(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 5),
-                                    child: SvgPicture.asset(
-                                        "assets/svg/google_icon.svg"),
-                                  ),
-                                  const SizedBox(
-                                    width: 15,
-                                  ),
-                                  Text(
-                                    "GOOGLE",
-                                    style: kmediumTextBold(kColorSmoke2),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  Text("")
-                                ],
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
+                          // Text(
+                          //   "or sign in with",
+                          //   style: TextStyle(
+                          //       fontWeight: FontWeight.w400,
+                          //       fontFamily: "Poppins",
+                          //       fontSize: 12,
+                          //       color: kColorSmoke),
+                          //   textAlign: TextAlign.center,
+                          // ),
+                          // const SizedBox(
+                          //   height: 15,
+                          // ),
+                          // Container(
+                          //   width: width,
+                          //   height: 40,
+                          //   color: kfacebookColor,
+                          //   child: Center(
+                          //     child: Row(
+                          //       mainAxisAlignment: MainAxisAlignment.center,
+                          //       children: [
+                          //         Padding(
+                          //           padding: const EdgeInsets.only(
+                          //               left: 5, top: 5, bottom: 5),
+                          //           child: Container(
+                          //               padding: const EdgeInsets.symmetric(
+                          //                   horizontal: 7, vertical: 5),
+                          //               decoration: BoxDecoration(
+                          //                   color: kColorWhite,
+                          //                   borderRadius:
+                          //                       BorderRadius.circular(180)),
+                          //               child: SvgPicture.asset(
+                          //                 "assets/svg/facebook.svg",
+                          //                 color: kfacebookColor,
+                          //                 width: 10,
+                          //                 height: 10,
+                          //               ),
+                          //           ),
+                          //         ),
+                          //         const SizedBox(
+                          //           width: 15,
+                          //         ),
+                          //         Text(
+                          //           "FACEBOOK",
+                          //           style: kmediumTextBold(kColorWhite),
+                          //           textAlign: TextAlign.center,
+                          //         ),
+                          //         const Text("")
+                          //       ],
+                          //     ),
+                          //   ),
+                          // ),
+                          // const SizedBox(
+                          //   height: 20,
+                          // ),
+                          // // SignInWithAppleButton(onPressed: ()async{
+                          // //
+                          // //   final credential = await SignInWithApple.getAppleIDCredential(scopes: [
+                          // //     AppleIDAuthorizationScopes.email,
+                          // //     AppleIDAuthorizationScopes.fullName,
+                          // //   ]
+                          // //   );
+                          // // }
+                          // // ),
+                          // // // Container(
+                          // // //   width: width,
+                          // // //   height: 40,
+                          // // //   color: Colors.black26,
+                          // // //   child: InkWell(
+                          // // //     onTap: ()async{
+                          // // //       final _credential = await SignInWithApple.getAppleIDCredential(scopes: [
+                          // // //
+                          // // //       ]);
+                          // // //     },
+                          // // //     child: Center(
+                          // // //       child: Row(
+                          // // //         mainAxisAlignment: MainAxisAlignment.center,
+                          // // //         children: [
+                          // // //
+                          // // //           Padding(
+                          // // //             padding: const EdgeInsets.only(
+                          // // //                 left: 5, top: 5, bottom: 5),
+                          // // //             child: Container(
+                          // // //               padding: const EdgeInsets.symmetric(
+                          // // //                   horizontal: 7, vertical: 5),
+                          // // //               decoration: BoxDecoration(
+                          // // //                   color: Colors.white,
+                          // // //                   borderRadius:
+                          // // //                   BorderRadius.circular(180)),
+                          // // //               child: const Image(
+                          // // //                 image: AssetImage('lib/image/apple.png'),
+                          // // //                 height: 15,
+                          // // //
+                          // // //               ),
+                          // // //             ),
+                          // // //           ),
+                          // // //           const SizedBox(
+                          // // //             width: 15,
+                          // // //           ),
+                          // // //           Text(
+                          // // //             "SIGN IN WITH APPLE",
+                          // // //             style: kmediumTextBold(kColorWhite),
+                          // // //             textAlign: TextAlign.center,
+                          // // //           ),
+                          // // //           const Text("")
+                          // // //         ],
+                          // // //       ),
+                          // // //     ),
+                          // // //   ),
+                          // // // ),
+                          // // const SizedBox(height: 15,),
+                          // Container(
+                          //   width: width,
+                          //   height: 40,
+                          //   decoration: BoxDecoration(
+                          //     border: Border.all(
+                          //         width: .6,
+                          //         color: kColorSmoke,
+                          //         style: BorderStyle.solid),
+                          //     color: kColorWhite,
+                          //   ),
+                          //   child: Center(
+                          //     child: Row(
+                          //       mainAxisAlignment: MainAxisAlignment.center,
+                          //       children: [
+                          //         Padding(
+                          //           padding: const EdgeInsets.only(left: 5),
+                          //           child: SvgPicture.asset(
+                          //               "assets/svg/google_icon.svg"),
+                          //         ),
+                          //         const SizedBox(
+                          //           width: 15,
+                          //         ),
+                          //         Text(
+                          //           "GOOGLE",
+                          //           style: kmediumTextBold(kColorSmoke2),
+                          //           textAlign: TextAlign.center,
+                          //         ),
+                          //         const Text(""),
+                          //       ],
+                          //     ),
+                          //   ),
+                          // ),
+                          // const SizedBox(
+                          //   height: 15,
+                          // ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -511,7 +577,7 @@ class _Login extends State<Login> with SingleTickerProviderStateMixin {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                new CreateAccount()));
+                                                 CreateAccount()));
                                   },
                                   child: const Text(
                                     "REGISTER",
@@ -539,7 +605,7 @@ class _Login extends State<Login> with SingleTickerProviderStateMixin {
                     child: Container(
                       width: width,
                       height: height,
-                      color: Color(0xFF000000).withOpacity(0.3),
+                      color: const Color(0xFF000000).withOpacity(0.3),
                       child: Stack(
                         children: [
                           Positioned(

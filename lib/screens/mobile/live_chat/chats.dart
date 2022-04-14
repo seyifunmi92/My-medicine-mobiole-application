@@ -13,7 +13,6 @@ class LiveChat extends StatefulWidget {
   @override
   _LiveChat createState() => _LiveChat();
 }
-
 class _LiveChat extends State<LiveChat> {
   bool value = false;
   bool productShow = false;
@@ -42,8 +41,8 @@ class _LiveChat extends State<LiveChat> {
           child: ListView(
             children: [
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                color: Color(0xFFF8F5FC),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                color: const Color(0xFFF8F5FC),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -58,7 +57,7 @@ class _LiveChat extends State<LiveChat> {
                             color: kPrimaryColor,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Text(
@@ -69,7 +68,7 @@ class _LiveChat extends State<LiveChat> {
                     ),
                     Row(
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           width: 30,
                         ),
                         SvgPicture.asset(
@@ -83,7 +82,7 @@ class _LiveChat extends State<LiveChat> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
             ],
@@ -95,7 +94,7 @@ class _LiveChat extends State<LiveChat> {
 
   Widget customInAppCall(String text, String asset, Widget widget) {
     return Container(
-        decoration: new BoxDecoration(
+        decoration:  BoxDecoration(
           color: kColorWhite,
           border: Border(
             top: BorderSide(
@@ -104,12 +103,12 @@ class _LiveChat extends State<LiveChat> {
                 width: 1.0, color: Color(0xFFCCCED0).withOpacity(.4)),
           ),
         ),
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 17),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
         child: Column(
           children: [
             Row(
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 SvgPicture.asset(
@@ -129,7 +128,7 @@ class _LiveChat extends State<LiveChat> {
                         horizontal: asset.contains("facebook") ? 35 : 25),
                     child: Text(
                       text,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: "Poppins",
                         fontWeight: FontWeight.w400,
                         color: kColorBlack,

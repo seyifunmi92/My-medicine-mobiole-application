@@ -17,16 +17,16 @@ import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
 class RegComplete extends StatefulWidget {
-  _RegComplete createState() => new _RegComplete();
+  _RegComplete createState() => _RegComplete();
 }
 
 class _RegComplete extends State<RegComplete> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
+  // ignore: unused_element
   Future<void> _makePhoneCall(String url) async {
     if (await canLaunch(url)) {
       await launch(url);
@@ -37,7 +37,6 @@ class _RegComplete extends State<RegComplete> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     final number = 'tel: +2348185004891';
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
@@ -399,16 +398,16 @@ class _RegComplete extends State<RegComplete> {
             content: Text(
                 "Are you sure you want to schedule medicine refill order?"),
             actions: <Widget>[
-              new FlatButton(
-                child: new Text('Yes'),
+              FlatButton(
+                child: Text('Yes'),
                 onPressed: () {
                   Navigator.of(context).pop();
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Refillorders()));
                 },
               ),
-              new FlatButton(
-                child: new Text('No'),
+              FlatButton(
+                child: Text('No'),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },

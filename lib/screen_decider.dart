@@ -18,7 +18,6 @@ class _Welcome extends State<ScreenDecider> {
     onClose();
     super.initState();
   }
-
   Future<void> onClose() async {
     SharedPreferences? sharedPreferences =
         await SharedPreferences.getInstance();
@@ -61,7 +60,7 @@ class _Welcome extends State<ScreenDecider> {
           PageRouteBuilder(
               maintainState: true,
               opaque: true,
-              pageBuilder: (context, _, __) => SplashScreen1(),
+              pageBuilder: (context, _, __) => const SplashScreen1(),
               transitionDuration: const Duration(seconds: 1),
               transitionsBuilder: (context, anim1, anim2, child) {
                 return FadeTransition(
@@ -80,7 +79,6 @@ class _Welcome extends State<ScreenDecider> {
       return "Empty";
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,10 +86,8 @@ class _Welcome extends State<ScreenDecider> {
         builder: (context, constraint) {
           double size = constraint.maxWidth;
           double heigth = constraint.maxHeight;
-
           print("Mobile device width ----- $size");
           print("Mobile device height ----- $heigth");
-
           if (size < 700) {
             onClose();
           }

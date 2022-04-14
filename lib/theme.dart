@@ -1,8 +1,6 @@
 
 import 'package:flutter/material.dart';
-
 import 'constants.dart';
-
 
 
 ThemeData lightThemeData(BuildContext buildContext){
@@ -13,7 +11,7 @@ ThemeData lightThemeData(BuildContext buildContext){
     unselectedWidgetColor: kPrimaryColor,
     appBarTheme: appBarTheme,
     iconTheme: const IconThemeData(color: kContentColorLightTheme),
-    colorScheme: ColorScheme.light(
+    colorScheme: const ColorScheme.light(
       primary:  kPrimaryColor,
       secondary: kSecondaryColor,
       error: kErrorColor
@@ -27,7 +25,6 @@ ThemeData lightThemeData(BuildContext buildContext){
     ),
   );
 }
-
 
 ThemeData darkThemeData(BuildContext buildContext){
   return ThemeData.dark().copyWith(
@@ -51,5 +48,4 @@ ThemeData darkThemeData(BuildContext buildContext){
   );
 }
 
-
-final appBarTheme = AppBarTheme(centerTitle: false, elevation: 0);
+const appBarTheme =   AppBarTheme(centerTitle: false, elevation: 0);

@@ -1,7 +1,5 @@
 // ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, avoid_print, unnecessary_new
-
 import 'dart:convert';
-
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -24,28 +22,24 @@ class SearchProducts extends StatefulWidget {
 
 class _SearchProductsState extends State<SearchProducts> {
 
-  TextEditingController searchController = new TextEditingController();
+  TextEditingController searchController = TextEditingController();
   bool loggedInUserClicked = false;
   bool value = false;
   bool productShow = false;
   bool searchIsEmpty = false;
-
   late stt.SpeechToText _speech;
   bool _isListening = false;
   String _text = 'Press the button and start speaking';
   double _confidence = 1.0;
   bool isLoading = false;
-
   final _scaffoldKey = new GlobalKey<ScaffoldState>();
   List<ProductSearch> list = [];
 
   @override
   void initState() {
-    // TODO: implement initState
     initiateSpeech();
     super.initState();
   }
-
 
   void initiateSpeech() async {
     _speech = stt.SpeechToText();
@@ -57,7 +51,6 @@ class _SearchProductsState extends State<SearchProducts> {
       print("The user has denied the use of speech recognition.");
     }
   }
-
 
   void errorListener(SpeechRecognitionError error) {
     print('Received error status: $error, listening: ${_speech.isListening}');

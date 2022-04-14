@@ -330,7 +330,6 @@ class MedUserRole {
   String name;
 
   MedUserRole({required this.id, required this.name});
-
   factory MedUserRole.fromJson(Map<String, dynamic> json) {
     return MedUserRole(id: json['id'], name: json['name']);
   }
@@ -811,9 +810,9 @@ class ProductSearch {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = Map<String, dynamic>();
-    data['productId'] = this.productId;
-    data['productName'] = this.productName;
-    data['productImageUrl'] = this.productImageUrl;
+    data['productId'] = productId;
+    data['productName'] = productName;
+    data['productImageUrl'] = productImageUrl;
     data['productImageUrl2'] = this.productImageUrl2;
     data['productImageUrl3'] = this.productImageUrl3;
     data['productImageUrl4'] = this.productImageUrl4;
@@ -1170,7 +1169,7 @@ class CartItems {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['shoppingCartOrderItemId'] = this.shoppingCartOrderItemId;
     data['shoppingCartOrderId'] = this.shoppingCartOrderId;
     data['productId'] = this.productId;
@@ -1233,7 +1232,7 @@ class OrderData {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['salesOrderId'] = this.salesOrderId;
     data['uniqueOrderId'] = this.uniqueOrderId;
     data['orderStatus'] = this.orderStatus;
@@ -1319,7 +1318,7 @@ class OrderDataDetails2 {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['salesOrderId'] = this.salesOrderId;
     data['orderDate'] = this.orderDate;
     data['paymentMethod'] = this.paymentMethod;
@@ -1373,7 +1372,7 @@ class OrderItems {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['salesOrderItemId'] = this.salesOrderItemId;
     data['productName'] = this.productName;
     data['productImageUrl'] = this.productImageUrl;
@@ -1492,7 +1491,7 @@ class LogisticsDelivery {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['logisticsDeliveryOptionId'] = this.logisticsDeliveryOptionId;
     data['logisticsDeliveryCompany'] = this.logisticsDeliveryCompany;
     data['logisticsDeliveryType'] = this.logisticsDeliveryType;
@@ -1665,7 +1664,7 @@ class BundleItems {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data =  Map<String, dynamic>();
     data['id'] = this.id;
     data['bundleId'] = this.bundleId;
     data['productId'] = this.productId;

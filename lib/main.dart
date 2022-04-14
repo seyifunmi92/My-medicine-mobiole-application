@@ -11,6 +11,7 @@ import 'package:mymedicinemobile/theme.dart';
 import 'package:provider/provider.dart';
 // ignore: unused_import
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 // FirebaseOptions get firebaseOptions async => const FirebaseOptions(
 //      appId: '1:515849272550:android:36a0a684a20ae2dc5ccf27',
@@ -18,7 +19,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 //           'AAAAeBsDPOY:APA91bHuxzMtV2y38HZ5-yT5fRQ1-O_hCgG8lh39UfSBy5exQ_zXWo0276Cgw7K1_qK4PvbF6Lk_TUuC_pnF6BwzsTZmlt0yjtBRywGnGITVwVDZKjT1vNPnqV4G-sCMoyKEWmHHl-2L',
 //       projectId: 'mymedicine-3de15',
 //       messagingSenderId: '515849272550',
-//   );
+//
+//
+//  );
 FirebaseOptions get firebaseOptions => const FirebaseOptions(
       appId: '1:515849272550:android:36a0a684a20ae2dc5ccf27',
       apiKey:
@@ -26,6 +29,7 @@ FirebaseOptions get firebaseOptions => const FirebaseOptions(
       projectId: 'mymedicine-3de15',
       messagingSenderId: '515849272550',
     );
+
 String get name => 'Mymedicine';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,7 +39,6 @@ void main() async {
     child: const MyApp(),
   ));
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   // This widget is the root of your application.
@@ -56,20 +59,17 @@ class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
-
 class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
   }
-
   @override
 //   Widget build(BuildContext context) {
 //     return Scaffold(
 //       body: ScreenDecider(),
 //     );
 //   }
-//
 // }
   Widget build(BuildContext context) {
     return const Scaffold(

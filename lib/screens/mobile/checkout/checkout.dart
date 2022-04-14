@@ -88,6 +88,8 @@ class _Checkout extends State<Checkout> with SingleTickerProviderStateMixin {
     }
   }
 
+
+
   //int pageCurrent = 0;
   int pagerCurrentIndex = 0;
   int firstPagerCurrent = 0;
