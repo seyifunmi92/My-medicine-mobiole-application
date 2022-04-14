@@ -1371,6 +1371,7 @@ class _HomePager extends State<HomePager> {
                                           final url =
                                               "http://dev.mymedicines.africa/blog";
                                           if (await canLaunch(url)) {
+                                            print("This can launch $url");
                                             await launch(url,
                                                 forceSafariVC: true,
                                                 forceWebView: true,
@@ -1407,6 +1408,7 @@ class _HomePager extends State<HomePager> {
                                 height: 15,
                               ),
                               Container(
+
                                 height: 300,
                                 child: FutureBuilder(
                                     future: new ServiceClass().viewAllBlogs(),
@@ -1427,6 +1429,7 @@ class _HomePager extends State<HomePager> {
                                           print("WishList");
 
                                           return Container(
+                                            color: Colors.white,
                                             height: 300,
                                             //padding: EdgeInsets.only(bottom: 20),
                                             child: ListView(

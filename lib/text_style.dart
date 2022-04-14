@@ -80,3 +80,8 @@ TextStyle kextralargeText(Color colors) => TextStyle(
     fontSize: 45,
     fontFamily: fontFamily,
     fontWeight: FontWeight.w700);
+
+TextStyle kcolorExtra(Color colors)=> TextStyle(
+  color: colors,
+  fontSize: Medium,
+);

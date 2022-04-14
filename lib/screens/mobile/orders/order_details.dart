@@ -38,10 +38,10 @@ class _OrderDetails extends State<OrderDetails>
   bool loading = true;
   bool showAdded = false;
   late AnimationController _animationController;
-  final _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final _scaffoldKey =  GlobalKey<ScaffoldState>();
   bool isChecked = false;
   bool showRateItem = false;
-  TextEditingController rateComment = new TextEditingController();
+  TextEditingController rateComment = TextEditingController();
   int selectedRating = 0;
   int selectedProductId = 0;
   bool rateLoading = false;
@@ -154,7 +154,7 @@ class _OrderDetails extends State<OrderDetails>
                                 spreadRadius: 5,
                                 blurRadius: 7,
                                 offset:
-                                    Offset(0, 3), // changes position of shadow
+                                    const Offset(0, 3), // changes position of shadow
                               ),
                             ],
                           ),
@@ -247,7 +247,7 @@ class _OrderDetails extends State<OrderDetails>
                                               color: kColorBlack,
                                             ),
                                             Text(
-                                              "${formatter.format(OrderDataDetails!.subTotal!)}",
+                                              "$formatter.format(OrderDataDetails!.subTotal!)",
                                               style: TextStyle(
                                                   fontFamily: "Poppins",
                                                   fontSize: 13,

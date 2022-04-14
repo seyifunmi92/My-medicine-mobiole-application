@@ -33,7 +33,7 @@ Widget navBarCustom(String pageName, BuildContext context, Widget widget,bool sh
                   height: 20,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               showPageName ? Text(
@@ -120,8 +120,8 @@ Widget navBarCustom(String pageName, BuildContext context, Widget widget,bool sh
 
 Widget navBarSearchCustom(String pageName, BuildContext context, Widget widget,bool showPageName) =>
     Container(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      color: Color(0xFFF8F5FC),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      color: const Color(0xFFF8F5FC),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
