@@ -15,6 +15,7 @@ import 'package:provider/provider.dart';
 import '../../../text_style.dart';
 import 'bundles_details.dart';
 
+
 class AllBundles extends StatefulWidget {
   @override
   _AllBundlesState createState() => _AllBundlesState();

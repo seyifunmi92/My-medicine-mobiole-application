@@ -51,7 +51,7 @@ Future<dynamic> myBackgroundMessageHandler(RemoteMessage message) async {
 class _ChatApp extends State<ChatApp> {
 
   int _counter = 0;
-  final GlobalKey<ScaffoldState>? _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState>? _scaffoldKey =  GlobalKey<ScaffoldState>();
 
   void registerFcmToken() async{
     if(Platform.isAndroid) {
@@ -67,7 +67,7 @@ class _ChatApp extends State<ChatApp> {
     var alert = AlertDialog(
       scrollable: true,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-      title: Text(
+      title: const Text(
         "Identify/Restore User",
         textDirection: TextDirection.ltr,
         style: TextStyle(fontFamily: 'OpenSans-Regular'),
@@ -77,7 +77,7 @@ class _ChatApp extends State<ChatApp> {
           children: [
             TextFormField(
                 autofocus: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: "External ID",
                 ),
                 onChanged: (val) {
@@ -87,7 +87,7 @@ class _ChatApp extends State<ChatApp> {
                 }),
             TextFormField(
                 autofocus: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: "Restore ID",
                 ),
                 onChanged: (val) {
@@ -104,7 +104,7 @@ class _ChatApp extends State<ChatApp> {
           children: <Widget>[
             MaterialButton(
               elevation: 10.0,
-              child: Text(
+              child: const Text(
                 "Identify/Restore",
                 textDirection: TextDirection.ltr,
               ),
@@ -120,7 +120,7 @@ class _ChatApp extends State<ChatApp> {
             ),
             MaterialButton(
               elevation: 10.0,
-              child: Text(
+              child: const Text(
                 "Cancel",
                 textDirection: TextDirection.ltr,
               ),
@@ -144,17 +144,17 @@ class _ChatApp extends State<ChatApp> {
   void notifyRestoreId(var event) async{
     FreshchatUser user = await Freshchat.getUser;
     String? restoreId = user.getRestoreId();
-    Clipboard.setData(new ClipboardData(text: restoreId));
+    Clipboard.setData( ClipboardData(text: restoreId));
     _scaffoldKey!.currentState!.showSnackBar(new SnackBar(content: new Text("Restore ID copied: $restoreId")));
   }
 
   void getUserProps(BuildContext context) {
-    final _userInfoKey = new GlobalKey<FormState>();
+    final _userInfoKey =  GlobalKey<FormState>();
     String? key,value;
     var alert = AlertDialog(
       scrollable: true,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-      title: Text(
+      title: const  Text(
         "Custom User Properties:",
         textDirection: TextDirection.ltr,
         style: TextStyle(fontFamily: 'OpenSans-Regular'),
@@ -165,7 +165,7 @@ class _ChatApp extends State<ChatApp> {
           children: [
             TextFormField(
                 autofocus: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: "Key",
                 ),
                 onChanged: (val) {
@@ -175,7 +175,7 @@ class _ChatApp extends State<ChatApp> {
                 }),
             TextFormField(
                 autofocus: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: "Value",
                 ),
                 onChanged: (val) {
@@ -192,7 +192,7 @@ class _ChatApp extends State<ChatApp> {
           children: <Widget>[
             MaterialButton(
               elevation: 10.0,
-              child: Text(
+              child: const Text(
                 "Add Properties",
                 textDirection: TextDirection.ltr,
               ),
@@ -205,7 +205,7 @@ class _ChatApp extends State<ChatApp> {
             ),
             MaterialButton(
               elevation: 10.0,
-              child: Text(
+              child: const Text(
                 "Cancel",
                 textDirection: TextDirection.ltr,
               ),
@@ -227,12 +227,12 @@ class _ChatApp extends State<ChatApp> {
   }
 
   void sendMessageApi(BuildContext context) {
-    final _userInfoKey = new GlobalKey<FormState>();
+    final _userInfoKey = GlobalKey<FormState>();
     String? conversationTag,message;
     var alert = AlertDialog(
       scrollable: true,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-      title: Text(
+      title: const Text(
         "Send Message API",
         textDirection: TextDirection.ltr,
         style: TextStyle(fontFamily: 'OpenSans-Regular'),
@@ -243,7 +243,7 @@ class _ChatApp extends State<ChatApp> {
           children: [
             TextFormField(
                 autofocus: true,
-                decoration: InputDecoration(
+                decoration:const InputDecoration(
                   hintText: "Conversation Tag",
                 ),
                 onChanged: (val) {
@@ -253,7 +253,7 @@ class _ChatApp extends State<ChatApp> {
                 }),
             TextFormField(
                 autofocus: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: "Message",
                 ),
                 onChanged: (val) {
@@ -270,7 +270,7 @@ class _ChatApp extends State<ChatApp> {
           children: <Widget>[
             MaterialButton(
               elevation: 10.0,
-              child: Text(
+              child: const Text(
                 "Send Message",
                 textDirection: TextDirection.ltr,
               ),
@@ -285,7 +285,7 @@ class _ChatApp extends State<ChatApp> {
             ),
             MaterialButton(
               elevation: 10.0,
-              child: Text(
+              child: const Text(
                 "Cancel",
                 textDirection: TextDirection.ltr,
               ),
@@ -316,15 +316,15 @@ class _ChatApp extends State<ChatApp> {
   void initState() {
     // TODO: implement initState
 
-    //startUpServer();
+    startUpServer();
 
-    // Firebase.initializeApp(name: name, options: firebaseOptions).whenComplete(() {
-    //   print("Firebase app completed");
-    //   setState(() {});
-    // });
+    Firebase.initializeApp(name: name, options: firebaseOptions).whenComplete(() {
+      print("Firebase app completed");
+      setState(() {});
+    });
 
-    // Freshchat.init("c794c32c-89e7-4015-9279-7c191c8ba0d6",
-    //     "030354ff-d499-4c4d-b29b-5c06f5776937", "msdk.eu.freshchat.com",stringsBundle: "FCCustomLocalizable",themeName: "CustomTheme.plist");
+    Freshchat.init("c794c32c-89e7-4015-9279-7c191c8ba0d6",
+        "030354ff-d499-4c4d-b29b-5c06f5776937", "msdk.eu.freshchat.com",stringsBundle: "FCCustomLocalizable",themeName: "CustomTheme.plist");
 
     /**
      * This is the Firebase push notification server key for this sample app.

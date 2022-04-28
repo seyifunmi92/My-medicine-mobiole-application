@@ -10,7 +10,6 @@ class SanitaryAsset {
   String asset;
   String text;
   String category;
-
   SanitaryAsset(
       {required this.asset, required this.category, required this.text});
 }
@@ -20,7 +19,6 @@ class CartCheckedBoxState {
   bool isChecked = false;
   CartCheckedBoxState({required this.text, required this.isChecked});
 }
-
 class CartModel {
   String name;
   String price;
@@ -334,7 +332,6 @@ class MedUserRole {
     return MedUserRole(id: json['id'], name: json['name']);
   }
 }
-
 class MedFaq {
   int id;
   String? question;
@@ -1360,16 +1357,27 @@ class OrderItems {
       this.productId,
       this.couponDiscount});
 
-  OrderItems.fromJson(Map<String, dynamic> json) {
-    salesOrderItemId = json['salesOrderItemId'];
-    productName = json['productName'];
-    productImageUrl = json['productImageUrl'];
-    packSize = json['packSize'];
-    quantity = json['quantity'];
-    productId = json['productId'];
-    unitprice = json['unitPrice'];
-    couponDiscount = json['couponDiscount'];
+  factory OrderItems.fromJson(Map<String, dynamic> map) {
+
+    return OrderItems(
+    salesOrderItemId : map['salesOrderItemId'],
+    productName : map['productName'],
+    productImageUrl : map['productImageUrl'],
+    packSize : map['packSize'],
+    quantity : map['quantity'],
+    productId : map['productId'],
+    unitprice : map['unitPrice'],
+    couponDiscount : map['couponDiscount'],
+    );
   }
+
+  // factory Photo.fromMap(Map<String, dynamic> map) {
+  //   return Photo(
+  //       id: map["id"],
+  //       url: map["urls"]["regular"],
+  //       description: map["description"] ?? "No Description",
+  //       user: User.fromMap(map["user"]));
+  // }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = Map<String, dynamic>();
@@ -2182,7 +2190,7 @@ class BundleDetails {
     if (json['bundleItems'] != null) {
       bundleItems = [];
       json['bundleItems'].forEach((v) {
-        bundleItems!.add(new BundleItems2.fromJson(v));
+        bundleItems!.add(BundleItems2.fromJson(v));
       });
     }
     id = json['id'];
@@ -2258,7 +2266,7 @@ class BundleItems2 {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['id'] = this.id;
     data['bundleId'] = this.bundleId;
     data['productId'] = this.productId;

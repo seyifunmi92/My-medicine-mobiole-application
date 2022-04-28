@@ -1,6 +1,6 @@
 
 import 'dart:convert';
-
+import 'package:mymedicinemobile/screens/mobile/cart/emptycart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -2712,10 +2712,34 @@ class _MyAccount extends State<MyAccount> with SingleTickerProviderStateMixin {
                             children: [
                               InkWell(
                                 onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Cart()));
+                                  var countlength = Provider.of<ServiceClass>(context, listen: false).CurrentIndex.toString();
+                                  print(countlength);
+                                  print("This is the value of $countlength");
+                                  //print("This is ${myorder.length}");
+                                  if(countlength == 0.toString()){
+                                    //setState(() {
+                                    //noOrder = true;
+                                    // print(noOrder);
+                                    // print("This is $myorder");
+                                    // print("This is ${myorder.length}");
+                                    //});
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                Emptycart()));
+                                  }
+                                  else {
+                                    print("I am a boy");
+                                    // setState(() {
+                                    //   print("I am a boy");
+                                    //   print(countlength);
+                                    //   print("This is $countlength");
+                                    // });
+                                    Navigator.push(context, MaterialPageRoute(
+                                        builder: (context) => Cart()
+                                    ));
+                                  }
                                 },
                                 child: Container(
                                   margin: EdgeInsets.symmetric(

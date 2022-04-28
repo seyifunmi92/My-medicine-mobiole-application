@@ -31,9 +31,9 @@ class _LocationState extends State<LocationState>
   @override
   void initState() {
     // TODO: implement initState
-    _animationController = new AnimationController(
+    _animationController = AnimationController(
       vsync: this,
-      duration: new Duration(seconds: 2),
+      duration:const  Duration(seconds: 2),
     );
     _animationController.repeat();
 

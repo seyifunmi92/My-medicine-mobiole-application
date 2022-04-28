@@ -1792,7 +1792,6 @@ class ServiceClass extends ChangeNotifier {
       return "Network Error";
     }
   }
-
   Future<String> completeOrder(
       String uniqueOrderId,
       String transactionReference,
@@ -1817,7 +1816,7 @@ class ServiceClass extends ChangeNotifier {
         "logisticsDeliveryOptionId": logisticsDeliveryOptionId
       });
 
-      //apigw/mymedicine/order/completeCashOrde
+      //apigw/mymedicine/order/completeCashOrder
 
       var url = Uri.parse(BaseUrl + "apigw/mymedicine/order/complete");
       http.Response response =
@@ -2218,7 +2217,6 @@ class ServiceClass extends ChangeNotifier {
       return "Network Error";
     }
   }
-
   Future<ResponseObject> resendOTP(int otpID) async {
     print("In OTP service now...... we cool my man");
     print("${otpID}");

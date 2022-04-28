@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:mymedicinemobile/screens/mobile/cart/emptycart.dart';
+import 'package:mymedicinemobile/screens/mobile/cart/cart.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -58,15 +60,41 @@ Widget navBarCustom(String pageName, BuildContext context, Widget widget,bool sh
                   height: 22,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 30,
               ),
               Stack(
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => widget));
+                      var countlength = Provider.of<ServiceClass>(context, listen: false).CurrentIndex.toString();
+                      print(countlength);
+                      print("This is the value of $countlength");
+                      //print("This is ${myorder.length}");
+                      if(countlength == 0.toString()){
+                        //setState(() {
+                          //noOrder = true;
+                          // print(noOrder);
+                          // print("This is $myorder");
+                          // print("This is ${myorder.length}");
+                        //});
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    Emptycart()));
+                      }
+                      else {
+                        print("I am a boy");
+                        // setState(() {
+                        //   print("I am a boy");
+                        //   print(countlength);
+                        //   print("This is $countlength");
+                        // });
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => Cart()
+                        ));
+                      }
                     },
                     child: Container(
                       margin:
@@ -113,6 +141,9 @@ Widget navBarCustom(String pageName, BuildContext context, Widget widget,bool sh
         ],
       ),
     );
+
+// void setState(Null Function() param0) {
+// }
 
 
 
@@ -170,8 +201,34 @@ Widget navBarSearchCustom(String pageName, BuildContext context, Widget widget,b
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => widget));
+                      var countlength = Provider.of<ServiceClass>(context, listen: false).CurrentIndex.toString();
+                      print(countlength);
+                      print("This is the value of $countlength");
+                      //print("This is ${myorder.length}");
+                      if(countlength == 0.toString()){
+                        //setState(() {
+                        //noOrder = true;
+                        // print(noOrder);
+                        // print("This is $myorder");
+                        // print("This is ${myorder.length}");
+                        //});
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    Emptycart()));
+                      }
+                      else {
+                        print("I am a boy");
+                        // setState(() {
+                        //   print("I am a boy");
+                        //   print(countlength);
+                        //   print("This is $countlength");
+                        // });
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => Cart()
+                        ));
+                      }
                     },
                     child: Container(
                       margin:
@@ -470,12 +527,38 @@ Widget navBarCustomCartBeforeFilter(String pageName, BuildContext context, Widge
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => widget));
+                      var countlength = Provider.of<ServiceClass>(context, listen: false).CurrentIndex.toString();
+                      print(countlength);
+                      print("This is the value of $countlength");
+                      //print("This is ${myorder.length}");
+                      if(countlength == 0.toString()){
+                        //setState(() {
+                        //noOrder = true;
+                        // print(noOrder);
+                        // print("This is $myorder");
+                        // print("This is ${myorder.length}");
+                        //});
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    Emptycart()));
+                      }
+                      else {
+                        print("I am a boy");
+                        // setState(() {
+                        //   print("I am a boy");
+                        //   print(countlength);
+                        //   print("This is $countlength");
+                        // });
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => Cart()
+                        ));
+                      }
                     },
                     child: Container(
                       margin:
-                      EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                       child: SvgPicture.asset(
                         "assets/svg/show_cart.svg",
                         color: kPrimaryColor,
@@ -670,7 +753,7 @@ Widget navBarFilterCustom(String pageName, BuildContext context,bool showPageNam
             ],
           ),
           Row(
-            children: [
+            children: const [
               Text(
                 "Reset",
                 style: TextStyle(

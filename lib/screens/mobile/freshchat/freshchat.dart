@@ -14,7 +14,6 @@ import 'package:freshchat_sdk/freshchat_user.dart';
 
 class FreshChat extends StatelessWidget {
 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,10 +22,12 @@ class FreshChat extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Freshchat Flutter Demo'),
+      home: const MyHomePage(title: 'Freshchat Flutter Demo'),
     );
   }
 }
+
+
 
 void handleFreshchatNotification(Map<String, dynamic> message) async {
   if (await Freshchat.isFreshchatNotification(message)) {
@@ -41,8 +42,9 @@ Future<dynamic> myBackgroundMessageHandler(RemoteMessage message) async {
   handleFreshchatNotification(message.data);
 }
 
+
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, this.title}) : super(key: key);
+  const MyHomePage({Key? key, this.title}) : super(key: key);
 
   final String? title;
   @override
@@ -51,8 +53,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+
   int _counter = 0;
-  final GlobalKey<ScaffoldState>? _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState>? _scaffoldKey = GlobalKey<ScaffoldState>();
 
   void registerFcmToken() async{
     if(Platform.isAndroid) {
@@ -120,7 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             MaterialButton(
               elevation: 10.0,
-              child: Text(
+              child: const Text(
                 "Cancel",
                 textDirection: TextDirection.ltr,
               ),
@@ -144,17 +147,17 @@ class _MyHomePageState extends State<MyHomePage> {
   void notifyRestoreId(var event) async{
     FreshchatUser user = await Freshchat.getUser;
     String? restoreId = user.getRestoreId();
-    Clipboard.setData(new ClipboardData(text: restoreId));
-    _scaffoldKey!.currentState!.showSnackBar(new SnackBar(content: new Text("Restore ID copied: $restoreId")));
+    Clipboard.setData(ClipboardData(text: restoreId));
+    _scaffoldKey!.currentState!.showSnackBar(SnackBar(content:  Text("Restore ID copied: $restoreId")));
   }
 
   void getUserProps(BuildContext context) {
-    final _userInfoKey = new GlobalKey<FormState>();
+    final _userInfoKey = GlobalKey<FormState>();
     String? key,value;
     var alert = AlertDialog(
       scrollable: true,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-      title: Text(
+      title: const Text(
         "Custom User Properties:",
         textDirection: TextDirection.ltr,
         style: TextStyle(fontFamily: 'OpenSans-Regular'),
@@ -165,7 +168,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             TextFormField(
                 autofocus: true,
-                decoration: InputDecoration(
+                decoration:const  InputDecoration(
                   hintText: "Key",
                 ),
                 onChanged: (val) {
@@ -175,7 +178,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 }),
             TextFormField(
                 autofocus: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: "Value",
                 ),
                 onChanged: (val) {
@@ -192,7 +195,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             MaterialButton(
               elevation: 10.0,
-              child: Text(
+              child: const Text(
                 "Add Properties",
                 textDirection: TextDirection.ltr,
               ),
@@ -205,7 +208,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             MaterialButton(
               elevation: 10.0,
-              child: Text(
+              child: const Text(
                 "Cancel",
                 textDirection: TextDirection.ltr,
               ),
@@ -227,12 +230,12 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void sendMessageApi(BuildContext context) {
-    final _userInfoKey = new GlobalKey<FormState>();
+    final _userInfoKey =  GlobalKey<FormState>();
     String? conversationTag,message;
     var alert = AlertDialog(
       scrollable: true,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-      title: Text(
+      title:const  Text(
         "Send Message API",
         textDirection: TextDirection.ltr,
         style: TextStyle(fontFamily: 'OpenSans-Regular'),
@@ -243,7 +246,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             TextFormField(
                 autofocus: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: "Conversation Tag",
                 ),
                 onChanged: (val) {
@@ -253,7 +256,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 }),
             TextFormField(
                 autofocus: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: "Message",
                 ),
                 onChanged: (val) {
@@ -270,7 +273,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             MaterialButton(
               elevation: 10.0,
-              child: Text(
+              child: const Text(
                 "Send Message",
                 textDirection: TextDirection.ltr,
               ),
@@ -285,7 +288,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             MaterialButton(
               elevation: 10.0,
-              child: Text(
+              child: const Text(
                 "Cancel",
                 textDirection: TextDirection.ltr,
               ),
@@ -305,7 +308,6 @@ class _MyHomePageState extends State<MyHomePage> {
           return alert;
         });
   }
-
   FirebaseOptions get firebaseOptions => const FirebaseOptions(
     appId: '1:515849272550:android:36a0a684a20ae2dc5ccf27',
     apiKey: 'AAAAeBsDPOY:APA91bHuxzMtV2y38HZ5-yT5fRQ1-O_hCgG8lh39UfSBy5exQ_zXWo0276Cgw7K1_qK4PvbF6Lk_TUuC_pnF6BwzsTZmlt0yjtBRywGnGITVwVDZKjT1vNPnqV4G-sCMoyKEWmHHl-2L',
@@ -319,7 +321,6 @@ class _MyHomePageState extends State<MyHomePage> {
     WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp(name: name, options: firebaseOptions);
 }
-
 
   void initState() {
     super.initState();
@@ -349,6 +350,7 @@ class _MyHomePageState extends State<MyHomePage> {
         print("Notification Content: $data");
       });
       FirebaseMessaging.onBackgroundMessage(myBackgroundMessageHandler);
+      //Freshchat.showConversations();
     }
   }
 
@@ -365,7 +367,7 @@ class _MyHomePageState extends State<MyHomePage> {
       home: Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
-          title: Text('Freshchat Flutter Demo'),
+          title: const Text('Freshchat Flutter Demo'),
         ),
         body: Builder(
           builder: (context) => GridView.count(
@@ -377,7 +379,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Container(
                         decoration: BoxDecoration(border: Border.all(width: 1)),
                         child: Padding(
-                            padding: EdgeInsets.fromLTRB(0, 70, 0, 0),
+                            padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
                             child: Text(
                               "FAQs",
                               style: Theme.of(context).textTheme.headline5,
@@ -397,7 +399,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Container(
                         decoration: BoxDecoration(border: Border.all(width: 1)),
                         child: Padding(
-                            padding: EdgeInsets.fromLTRB(0, 70, 0, 0),
+                            padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
                             child: Text(
                               "Unread Count",
                               style: Theme.of(context).textTheme.headline5,
